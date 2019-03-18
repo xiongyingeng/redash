@@ -1,7 +1,5 @@
-import ast
 import itertools
 import json
-import base64
 from sqlalchemy import union_all
 from redash import redis_connection, __version__, settings
 from redash.models import db, DataSource, Query, QueryResult, Dashboard, Widget

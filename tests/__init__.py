@@ -13,7 +13,7 @@ os.environ['REDASH_GOOGLE_CLIENT_ID'] = "dummy"
 os.environ['REDASH_GOOGLE_CLIENT_SECRET'] = "dummy"
 os.environ['REDASH_MULTI_ORG'] = "true"
 
-from redash import create_app
+from redash.app import create_app
 from redash import redis_connection
 from redash.models import db
 from redash.utils import json_dumps, json_loads
