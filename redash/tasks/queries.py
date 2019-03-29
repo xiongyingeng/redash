@@ -137,8 +137,7 @@ def enqueue_query(query, data_source, user_id, is_api_key=False, scheduled_query
                     'enqueue_time': time.time(),
                     'scheduled': scheduled_query_id is not None,
                     'query_id': metadata.get('Query ID'),
-                    'user_id': user_id,
-                    'is_api_key': is_api_key
+                    'user_id': user_id
                 })
 
                 result = execute_query.apply_async(args=args,
@@ -334,7 +333,7 @@ class QueryExecutor(object):
 
         _unlock(self.query_hash, self.data_source.id)
 
-        if error:
+        if error is not None and data is None:
             result = QueryExecutionError(error)
             if self.scheduled_query is not None:
                 self.scheduled_query = models.db.session.merge(self.scheduled_query, load=False)
