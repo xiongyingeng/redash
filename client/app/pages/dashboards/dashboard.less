@@ -135,3 +135,28 @@
     }
   }
 }
+
+// grid bg
+// based on 6 cols, 35px rows and 15px spacing
+.dashboard-wrapper.editing-mode {
+  background-color: #e9eff1;
+
+  &::after {
+    content: "";
+    background: linear-gradient(to left, #f6f8f9, #f6f8f9 15px, transparent 15px), linear-gradient(to top, #f6f8f9, #f6f8f9 15px, transparent 15px);
+    background-size: calc((100vw - 15px) / 6) 50px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+}
+
+.dashboard-widget-wrapper {
+  z-index: 1;
+}
+
+.grid-stack-placeholder > .placeholder-content {
+  background: #f4deda !important;
+}
