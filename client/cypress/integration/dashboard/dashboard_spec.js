@@ -315,7 +315,7 @@ describe('Dashboard', () => {
           const { top, left } = $el.offset();
           expect(top).to.eq(214);
           expect(left).to.eq(215);
-          expect($el.width()).to.eq(585);
+          expect($el.width()).to.eq(600);
           expect($el.height()).to.eq(185);
         });
     });
@@ -651,11 +651,11 @@ describe('Dashboard', () => {
     it('shows widgets with full width', () => {
       cy.viewport(801, 800);
       cy.get('@textboxEl').should(($el) => {
-        expect($el.width()).to.eq(378);
+        expect($el.width()).to.eq(393);
       });
       cy.viewport(800, 800);
       cy.get('@textboxEl').should(($el) => {
-        expect($el.width()).to.eq(770);
+        expect($el.width()).to.eq(785);
       });
     });
 
