@@ -51,7 +51,6 @@ celery.conf.update(result_backend=settings.CELERY_RESULT_BACKEND,
                    worker_log_format=settings.CELERYD_WORKER_LOG_FORMAT,
                    worker_task_log_format=settings.CELERYD_WORKER_TASK_LOG_FORMAT)
 
-
 # Create a new Task base class, that pushes a new Flask app context to allow DB connections if needed.
 TaskBase = celery.Task
 
@@ -60,7 +59,8 @@ class ContextTask(TaskBase):
     abstract = True
 
     def __call__(self, *args, **kwargs):
-        with current_app.app_context():
+        from redash.wsgi import app
+        with app.app_context():
             return TaskBase.__call__(self, *args, **kwargs)
 
 
